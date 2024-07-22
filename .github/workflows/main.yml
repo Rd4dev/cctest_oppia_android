@@ -16,7 +16,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# This workflow has the following jobs:
+# This workflow has the following jobs: 2
 # robolectric_tests: Robolectric tests for all modules except the app module
 # app_tests: Non-flaky Robolectric tests for the app module
 jobs:
