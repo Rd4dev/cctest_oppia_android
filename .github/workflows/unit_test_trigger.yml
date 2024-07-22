@@ -5,20 +5,19 @@ name: Unit Tests Trigger
 # Controls when the action will run. Triggers the workflow on pull request
 # events or push events in the develop branch.
 
-#on:
-#  workflow_run:
-#    workflows: [Unit Tests (Robolectric - Bazel)]
-#    types:
-#      - completed
-#  workflow_dispatch:
-
 on:
+  workflow_run:
+    workflows: ['Unit Tests (Robolectric - Bazel)']
+    types: [completed]
   workflow_dispatch:
-  pull_request:
-  push:
-    branches:
-      # Push events on develop branch
-      - develop
+
+#on:
+#  workflow_dispatch:
+#  pull_request:
+#  push:
+#    branches:
+#      # Push events on develop branch
+#      - develop
 
 jobs:
   bazel_compute_affected_targets_after_trigger:
