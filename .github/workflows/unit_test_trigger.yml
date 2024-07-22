@@ -7,10 +7,10 @@ name: Unit Tests Trigger
 
 on:
   workflow_run:
-    workflows: [Unit Tests (Robolectric - Bazel)]
-    types:
-      - completed
-  workflow_dispatch:
+    workflows: ['Unit Tests (Robolectric - Bazel)']
+    types: [completed]
+    branches:
+      - 'develop'
 
 #on:
 #  workflow_dispatch:
@@ -89,6 +89,7 @@ jobs:
         run: |
           bazel run //scripts:compute_affected_tests -- $(pwd) $(pwd)/affected_targets.log origin/develop compute_all_tests=$compute_all_targets
           TEST_BUCKET_LIST=$(cat ./affected_targets.log | sed 's/^\|$/"/g' | paste -sd, -)
+          echo "Triggering"
           echo "Affected tests (note that this might be all tests if configured to run all or on the develop branch): $TEST_BUCKET_LIST"
           echo "::set-output name=matrix::{\"affected-tests-bucket-base64-encoded-shard\":[$TEST_BUCKET_LIST]}"
           if [[ ! -z "$TEST_BUCKET_LIST" ]]; then
