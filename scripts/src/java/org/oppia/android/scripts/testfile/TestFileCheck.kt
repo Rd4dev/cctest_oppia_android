@@ -58,9 +58,9 @@ fun main(vararg args: String) {
   }
 
   if (matchedFiles.isNotEmpty()) {
-    throw Exception("TEST FILE CHECK FAILED")
+    throw Exception("TEST FILE CHECK FAILED ")
   } else {
-    println("TEST FILE CHECK PASSED")
+    println("TEST FILE CHECK PASSED ")
   }
 }
 
