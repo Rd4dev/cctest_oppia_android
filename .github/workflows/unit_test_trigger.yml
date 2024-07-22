@@ -9,7 +9,8 @@ on:
   workflow_run:
     workflows: ['Unit Tests (Robolectric - Bazel)']
     types: [completed]
-  workflow_dispatch:
+    branches:
+      - 'develop'
 
 #on:
 #  workflow_dispatch:
